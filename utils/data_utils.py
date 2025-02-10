@@ -3,6 +3,12 @@ from torchvision import transforms, datasets
 
 
 def process_image(image):
+    """
+    Processes an image for use in a PyTorch model.
+
+    :param image: The image to process.
+    :return: The processed image tensor.
+    """
     transform = get_test_transforms()
     image = transform(image)
     image = image.view(1, *image.shape)
@@ -11,6 +17,11 @@ def process_image(image):
 
 
 def get_train_transforms():
+    """
+    Returns the transformations to be applied to the training dataset.
+
+    :return: A composition of transformations for the training dataset.
+    """
     return transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.RandomRotation(30),
@@ -21,6 +32,11 @@ def get_train_transforms():
     ])
     
 def get_test_transforms():
+    """
+    Returns the transformations to be applied to the validation and test datasets.
+
+    :return: A composition of transformations for the validation and test datasets.
+    """
     return transforms.Compose([
         transforms.Resize(255),
         transforms.CenterCrop(224),
@@ -30,6 +46,12 @@ def get_test_transforms():
 
 
 def get_dataloaders(data_dir):
+    """
+    Returns the data loaders for the training, validation, and test datasets.
+
+    :param data_dir: The directory containing the dataset.
+    :return: A tuple containing the training, validation, and test data loaders.
+    """
     train_dir = data_dir + '/train'
     valid_dir = data_dir + '/valid'
     test_dir = data_dir + '/test'

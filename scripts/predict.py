@@ -5,10 +5,18 @@ import numpy as np
 import json
 from utils.data_utils import process_image
 from utils.model_utils import create_custom_model, load_checkpoint
-from config.arg_parsers import get_predict_args
+from utils.arg_parsers import get_predict_args
 
 
 def predict(image_path, model):
+    """
+    Predicts the class probabilities for an input image using a trained model.
+
+    :param image_path: Path to the image file.
+    :param model: The trained model.
+    :return: A dictionary mapping class names to their corresponding probabilities.
+    """
+    
     image = Image.open(image_path)
     image = process_image(image)
 
@@ -29,8 +37,16 @@ def predict(image_path, model):
     
     return predictions
 
-def show_results(image_path, model):
 
+def show_results(image_path, model):
+    """
+    Displays the image along with the top class predictions and their probabilities.
+
+    :param image_path: Path to the image file.
+    :param model: The trained model.
+    :return: None
+    """
+    
     image = Image.open(image_path)
     image.thumbnail((300,300))
 
@@ -55,7 +71,7 @@ def show_results(image_path, model):
 if __name__ == '__main__':
     args = get_predict_args()
 
-    with open('data/cat_to_name.json', 'r') as f:
+    with open('cat_to_name.json', 'r') as f:
         cat_to_name = json.load(f)
 
     model = create_custom_model('vgg19')

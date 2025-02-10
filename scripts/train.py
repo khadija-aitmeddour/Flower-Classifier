@@ -7,6 +7,18 @@ from utils.arg_parsers import get_train_args
 
 
 def train(model, epochs, criterion, optimizer, trainloader, validloader):
+    """
+    Trains the model using the training dataset and runs a validation pass at each epoch.
+
+    :param model: The model to train.
+    :param epochs: Number of epochs to train the model.
+    :param criterion: The loss function.
+    :param optimizer: The optimizer used for training.
+    :param trainloader: DataLoader for the training dataset.
+    :param validloader: DataLoader for the validation dataset.
+    :return: None
+    """
+    
     print('\nTraining in progress...')
     print('---------------------------------')
     for e in range(epochs):
@@ -60,8 +72,16 @@ def train(model, epochs, criterion, optimizer, trainloader, validloader):
             print('---------------------------------')
             print('Training completed successfully!')
 
+
 def calculate_test_accuracy(model, testloader):
-    
+    """
+    Calculates the accuracy of the model on the test dataset.
+
+    :param model: The trained model.
+    :param testloader: DataLoader for the test dataset.
+    :return: None
+    """
+        
     accuracy = 0
     with torch.no_grad():
         model.eval()
