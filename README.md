@@ -1,4 +1,4 @@
-# Flower Classifier Project
+# Flower Image Classifier
 
 ## Overview
 This project is an image classifier that identifies different types of flowers using a pre-trained PyTorch model. The model is fine-tuned to improve accuracy in flower classification.
