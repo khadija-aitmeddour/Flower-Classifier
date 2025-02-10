@@ -1,4 +1,5 @@
 /flowers
 /Flower_Image_Classifier.ipynb
-/__pycache__
+__pycache__
 /models
+/.git
